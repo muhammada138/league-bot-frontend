@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Keema Scores</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div id="bg-blur"></div>
+  <header class="topbar glass">
+    <div class="brand">
+      <div class="logo-dot"></div>
+      <span>Keema Scores</span>
+    </div>
+    <nav class="tabs">
+      <button class="tab active" data-tab="scoreboard">Scoreboard</button>
+      <button class="tab" data-tab="champions">Champions</button>
+      <button class="tab" data-tab="upload">Upload</button>
+      <button class="tab" data-tab="settings">Settings</button>
+    </nav>
+  </header>
+
+  <main>
+    <!-- SCOREBOARD -->
+    <section id="scoreboard" class="panel active">
+      <div class="panel-head">
+        <h2>Player Scoreboard</h2>
+        <div class="actions">
+          <button id="refreshScoreboard" class="btn">Refresh</button>
+        </div>
+      </div>
+      <div id="scoreboardContainer" class="card scroll"></div>
+    </section>
+
+    <!-- CHAMPIONS -->
+    <section id="champions" class="panel">
+      <div class="panel-head">
+        <h2>Champion Leaderboard</h2>
+        <div class="actions">
+          <button id="refreshChampions" class="btn">Refresh</button>
+        </div>
+      </div>
+      <div id="championsContainer" class="card scroll"></div>
+    </section>
+
+    <!-- UPLOAD -->
+    <section id="upload" class="panel">
+      <div class="panel-head"><h2>Upload ROFL</h2></div>
+      <div class="card">
+        <form id="uploadForm">
+          <label class="field">
+            <span>ROFL file</span>
+            <input type="file" id="roflFile" accept=".rofl" required />
+          </label>
+          <div class="row">
+            <button type="submit" class="btn primary">Upload</button>
+            <button type="button" id="btnApproveRefresh" class="btn">Approve & Rebuild</button>
+          </div>
+          <p class="hint">Uploads require your Admin Key and will be kept private until approved.</p>
+          <div id="uploadStatus" class="status"></div>
+        </form>
+      </div>
+    </section>
+
+    <!-- SETTINGS -->
+    <section id="settings" class="panel">
+      <div class="panel-head"><h2>Settings</h2></div>
+      <div class="card">
+        <form id="settingsForm">
+          <label class="field">
+            <span>API Base URL</span>
+            <input type="url" id="apiBase" placeholder="https://league-bot-backend.onrender.com" />
+          </label>
+          <label class="field">
+            <span>Admin Key</span>
+            <input type="password" id="adminKey" placeholder="keema-1234" />
+          </label>
+          <div class="row">
+            <button class="btn primary" type="submit">Save</button>
+            <button class="btn" type="button" id="btnReset">Reset</button>
+          </div>
+          <p class="hint">Values are stored locally in your browser only.</p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="muted">
+    Built for custom scrims • <span id="apiBadge"></span>
+  </footer>
+
+  <template id="tableTemplate">
+    <table class="data">
+      <thead></thead>
+      <tbody></tbody>
+    </table>
+  </template>
+
+  <script src="app.js"></script>
+</body>
+</html>
